@@ -1,0 +1,10 @@
+WITH previous_query AS(
+SELECT customer_id, COUNT(subcsription_id) AS 'subscriptions'
+FROM orders
+GROUP BY 1)
+
+SELECT customers.customer_name,
+previous_query.subscriptions
+FROM customers
+JOIN previous_query
+ON customers.customer_name = previous_query.subscriptions;
