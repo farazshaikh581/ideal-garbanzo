@@ -1,0 +1,10 @@
+SELECT *
+FROM newspaper
+LEFT JOIN online
+ON online.id = newspaper.id;
+
+SELECT *
+FROM newspaper
+LEFT JOIN online
+ON online.id = newspaper.id
+WHERE online.id IS NULL;
