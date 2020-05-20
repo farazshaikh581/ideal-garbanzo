@@ -85,7 +85,7 @@ head(us_census)
 ```{r error=TRUE}
 # update values of race columns
 us_census <- us_census %>%
-  mutate(Hispanic / 100,
+  mutate(Hispanic = Hispanic / 100,
   White = White / 100,
   Black = Black / 100,
   Native = Native / 100,
