@@ -1,0 +1,48 @@
+---
+title: "Standard Deviation"
+output: html_notebook
+---
+```{r message=FALSE, warning=FALSE, error=TRUE}
+library(readr)
+library(dplyr)
+```
+
+```{r error=TRUE}
+load("project.Rda")
+```
+
+```{r error=TRUE}
+# Change these variables to be the standard deviation of each dataset.
+# Inspect Data
+#head(london_data)
+#nrow(london_data)
+temp <- london_data$TemperatureC
+average_temp <- mean(temp)
+# Variance and SD for the year
+temperature_var <- var(temp)
+print(temperature_var)
+#Inspect once again
+temperature_standard_deviation <- sd(temp)
+print(temperature_standard_deviation)
+head(london_data)
+# Get monthly temperature average
+june <- london_data %>%
+  filter(month == '06')
+july <- london_data %>%
+  filter(month == '07')
+# Analyze by month
+june_mean <- mean(june$TemperatureC)
+july_mean <- mean(july$TemperatureC)
+june_mean
+july_mean
+
+june_sd <- sd(june$TemperatureC)
+july_sd <- sd(july$TemperatureC)
+june_sd
+july_sd
+
+monthly_stats <- london_data %>%
+  group_by(month) %>%
+  summarize(mean = mean(TemperatureC), standard_deviation = sd(TemperatureC))
+monthly_stats
+```
